@@ -9,7 +9,7 @@
 
 @implementation ComPopupView
 
-//@synthesize square;
+//@synthesize controller;
 //@synthesize view;
 // Add native view to titanium
 -(void)dealloc {
@@ -32,6 +32,7 @@
     self = [super init];
     if (self != nil) {
         NSLog(@"Init called");
+        UIMenuController* controller = [UIMenuController sharedMenuController];
     }
     return self;
 }
@@ -49,13 +50,26 @@
 
 -(void)hide:(id)args {
     NSLog(@"Hide dialog");
-    
+    UIMenuController* controller = [UIMenuController sharedMenuController];
+    [controller setMenuVisible:NO animated:YES];
 }
 
 -(void)show:(id)args {
     NSLog(@"Show dialog");
     
     [self becomeFirstResponder];
+    
+    UIMenuController* controller = [UIMenuController sharedMenuController];
+    
+    [controller setTargetRect:CGRectMake(0,0,1,1) inView:self];
+    [controller setMenuVisible:YES animated:YES];
+    
+}
+
+-(void)create:(id)args {
+    
+    [self becomeFirstResponder];
+    
     UIMenuController* controller = [UIMenuController sharedMenuController];
     
     UIMenuItem * item1 = [[[UIMenuItem alloc] initWithTitle:@"Fish" action:@selector(customMenu)] autorelease];
@@ -63,10 +77,10 @@
     UIMenuItem * item3 = [[[UIMenuItem alloc] initWithTitle:@"Grass" action:@selector(customMenu)] autorelease];
     
     [controller setMenuItems:[NSArray arrayWithObjects:item1, item2, item3, nil]];
-    
-    [controller setTargetRect:CGRectMake(0,0,320,460) inView:self];
-    [controller setMenuVisible:YES animated:YES];
-    
+}
+
+-(void)customMenu {
+    NSLog(@"It works!");
 }
 
 -(void)notifyOfColorChange:(TiColor*)newColor

@@ -23,6 +23,8 @@ var popup = TiPopup.createView({
 });
 win.add(popup);
 
+popup.create();
+
 popup.addEventListener('click', function() {
 	popup.show();
 	setTimeout(function() {

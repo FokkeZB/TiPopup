@@ -22,5 +22,6 @@
 
 USE_VIEW_FOR_UI_METHOD(show);
 USE_VIEW_FOR_UI_METHOD(hide);
+USE_VIEW_FOR_UI_METHOD(create);
 
 @end

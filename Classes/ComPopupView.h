@@ -11,14 +11,15 @@
 @interface ComPopupView : TiUIView {
     //UIView *view;
     //ComPopupViewController *controller;
-    // UIMenuController *controller;
+    //UIMenuController *controller;
     @private UIView *square;
 }
 
-//@property (strong, nonatomic) UIView *square;
+//@property (strong, nonatomic) UIMenuController *controller;
 //@property (strong, nonatomic) UIView *view;
 
 -(void)show:(id)args;
 -(void)hide:(id)args;
+-(void)create:(id)args;
 
 @end
