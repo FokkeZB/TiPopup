@@ -9,9 +9,6 @@
 
 @implementation ComPopupView
 
-//@synthesize controller;
-//@synthesize view;
-// Add native view to titanium
 -(void)dealloc {
     [super dealloc];
     NSLog(@"dealloc");
@@ -39,13 +36,6 @@
 
 - (BOOL)canBecomeFirstResponder {
 	return YES;
-}
-
-- (BOOL)canPerformAction:(SEL)action withSender:(id)sender {
-    if (action == @selector(customMenu)) {
-        return YES;
-    }
-    return NO;
 }
 
 -(void)hide:(id)args {
@@ -79,13 +69,12 @@
     
     [menuItems enumerateObjectsUsingBlock:^(id object, NSUInteger idx, BOOL *stop) {
         // do something with object
-        NSString *menuItemName = menuItems[idx];
+        // NSString *menuItemName = menuItems[idx];
+        NSString *menuItemName = [NSString stringWithFormat:@"magic_%lu", (unsigned long)idx];
         //NSLog(menuItemName);
-        //UIMenuItem * menuItem = [[[UIMenuItem alloc] initWithTitle:@"Fishy" action:@selector(customMenu)] autorelease];
-        [menuControllerItems addObject:[[[UIMenuItem alloc] initWithTitle:menuItemName action:@selector(customMenu)] autorelease]];
+        [menuControllerItems addObject:[[[UIMenuItem alloc] initWithTitle:menuItems[idx] action:NSSelectorFromString(menuItemName)] autorelease]];
     }];
     
-    //[menuControllerItems addObject:nil];
     
     UIMenuController* controller = [UIMenuController sharedMenuController];
     
@@ -93,13 +82,6 @@
     
     [menuControllerItems release];
     
-    /*
-    UIMenuItem * item1 = [[[UIMenuItem alloc] initWithTitle:@"Fish" action:@selector(customMenu)] autorelease];
-    UIMenuItem * item2 = [[[UIMenuItem alloc] initWithTitle:@"Stripes" action:@selector(customMenu)] autorelease];
-    UIMenuItem * item3 = [[[UIMenuItem alloc] initWithTitle:@"Grass" action:@selector(customMenu)] autorelease];
-    
-    [controller setMenuItems:[NSArray arrayWithObjects:item1, item2, item3, nil]];
-     */
 }
 
 -(void)customMenu {
@@ -153,6 +135,47 @@
 	// Signal a property change notification to demonstrate the use
 	// of the proxy for the event listeners
 	[self notifyOfColorChange:newColor];
+}
+
+#pragma Finding the MenuItemIndex
+// Credit:
+// http://stackoverflow.com/questions/9146670/ios-uimenucontroller-uimenuitem-how-to-determine-item-selected-with-generic-sel
+
+- (void)tappedMenuItem:(NSString *)buttonText {
+    NSLog(@"Index tapped: %@", buttonText);
+}
+/*
+- (BOOL)canPerformAction:(SEL)action withSender:(id)sender {
+    if (action == @selector(customMenu)) {
+        return YES;
+    }
+    return NO;
+}
+*/
+- (BOOL)canPerformAction:(SEL)action withSender:(id)sender {
+    NSString *sel = NSStringFromSelector(action);
+    NSRange match = [sel rangeOfString:@"magic_"];
+    if (match.location == 0) {
+        return YES;
+    }
+    return NO;
+}
+
+- (NSMethodSignature *)methodSignatureForSelector:(SEL)sel {
+    if ([super methodSignatureForSelector:sel]) {
+        return [super methodSignatureForSelector:sel];
+    }
+    return [super methodSignatureForSelector:@selector(tappedMenuItem:)];
+}
+
+- (void)forwardInvocation:(NSInvocation *)invocation {
+    NSString *sel = NSStringFromSelector([invocation selector]);
+    NSRange match = [sel rangeOfString:@"magic_"];
+    if (match.location == 0) {
+        [self tappedMenuItem:[sel substringFromIndex:6]];
+    } else {
+        [super forwardInvocation:invocation];
+    }
 }
 
 

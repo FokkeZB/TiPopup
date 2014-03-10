@@ -6,17 +6,10 @@
  */
 #import <UIKit/UIKit.h>
 #import "TiUIView.h"
-//#import "ComPopupViewController.h"
 
 @interface ComPopupView : TiUIView {
-    //UIView *view;
-    //ComPopupViewController *controller;
-    //UIMenuController *controller;
     @private UIView *square;
 }
-
-//@property (strong, nonatomic) UIMenuController *controller;
-//@property (strong, nonatomic) UIView *view;
 
 -(void)show:(id)args;
 -(void)hide:(id)args;
