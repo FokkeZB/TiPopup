@@ -70,13 +70,36 @@
     
     [self becomeFirstResponder];
     
+    // test
+    NSDictionary *arguments = [args objectAtIndex:0];
+    NSArray * menuItems = [arguments objectForKey:@"items"];
+    // NSLog(menuItems[0]);
+    
+    NSMutableArray * menuControllerItems = [[NSMutableArray alloc] init];
+    
+    [menuItems enumerateObjectsUsingBlock:^(id object, NSUInteger idx, BOOL *stop) {
+        // do something with object
+        NSString *menuItemName = menuItems[idx];
+        //NSLog(menuItemName);
+        //UIMenuItem * menuItem = [[[UIMenuItem alloc] initWithTitle:@"Fishy" action:@selector(customMenu)] autorelease];
+        [menuControllerItems addObject:[[[UIMenuItem alloc] initWithTitle:menuItemName action:@selector(customMenu)] autorelease]];
+    }];
+    
+    //[menuControllerItems addObject:nil];
+    
     UIMenuController* controller = [UIMenuController sharedMenuController];
     
+    [controller setMenuItems:menuControllerItems];
+    
+    [menuControllerItems release];
+    
+    /*
     UIMenuItem * item1 = [[[UIMenuItem alloc] initWithTitle:@"Fish" action:@selector(customMenu)] autorelease];
     UIMenuItem * item2 = [[[UIMenuItem alloc] initWithTitle:@"Stripes" action:@selector(customMenu)] autorelease];
     UIMenuItem * item3 = [[[UIMenuItem alloc] initWithTitle:@"Grass" action:@selector(customMenu)] autorelease];
     
     [controller setMenuItems:[NSArray arrayWithObjects:item1, item2, item3, nil]];
+     */
 }
 
 -(void)customMenu {
@@ -105,9 +128,9 @@
 
 -(void)setSquare_:(id)shape
 {
-	// This method is a property 'setter' for the 'color' property of the
-	// view. View property methods are named using a special, required
-	// convention (the underscore suffix).
+    // pretty cool stuff
+    // example:
+    // popup.createView({ square: 'yes' });
     
 	NSLog(@"[VIEW LIFECYCLE EVENT] Property Set: setSquare_");
     
