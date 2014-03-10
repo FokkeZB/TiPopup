@@ -11,10 +11,16 @@
 
 @implementation ComPopupViewProxy
 
-
--(id)showMenu:(id)args
-{
-    return [(ComPopupView*)[self view] showMenu:args];
+// This is to prevent errors from showing up. Thanks BeK0suke
+#ifndef USE_VIEW_FOR_UI_METHOD
+#define USE_VIEW_FOR_UI_METHOD(methodname)\
+-(void)methodname:(id)args\
+{\
+[self makeViewPerformSelector:@selector(methodname:) withObject:args createIfNeeded:YES waitUntilDone:NO];\
 }
+#endif
+
+USE_VIEW_FOR_UI_METHOD(show);
+USE_VIEW_FOR_UI_METHOD(hide);
 
 @end

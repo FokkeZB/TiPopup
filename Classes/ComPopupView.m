@@ -6,36 +6,116 @@
  */
 
 #import "ComPopupView.h"
-#import "TiUtils.h"
-#import "TiApp.h"
-#import "ComPopupViewController.h"
 
 @implementation ComPopupView
 
+//@synthesize square;
+//@synthesize view;
 // Add native view to titanium
 -(void)dealloc {
-    RELEASE_TO_NIL(view);
     [super dealloc];
+    NSLog(@"dealloc");
 }
 
+-(UIView*)square
+{
+	// Return the square view. If this is the first time then allocate and
+	// initialize it.
+	if (square == nil) {
+		NSLog(@"[VIEW LIFECYCLE EVENT] square");
+        square = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+        square.backgroundColor = [UIColor redColor];
+	}
+	return square;
+}
 - (id)init {
     self = [super init];
-    if (self) {
-        NSLog(@"Init called",self);
-        ComPopupViewController * controller = [[ComPopupViewController alloc] init];
-        [self addSubview:controller.view];
+    if (self != nil) {
+        NSLog(@"Init called");
     }
     return self;
 }
 
-
--(void)frameSizeChanged:(CGRect)frame bounds:(CGRect)bounds {
+- (BOOL)canBecomeFirstResponder {
+	return YES;
 }
 
+- (BOOL)canPerformAction:(SEL)action withSender:(id)sender {
+    if (action == @selector(customMenu)) {
+        return YES;
+    }
+    return NO;
+}
 
--(id)showMenu:(id)args
+-(void)hide:(id)args {
+    NSLog(@"Hide dialog");
+    
+}
+
+-(void)show:(id)args {
+    NSLog(@"Show dialog");
+    
+    [self becomeFirstResponder];
+    UIMenuController* controller = [UIMenuController sharedMenuController];
+    
+    UIMenuItem * item1 = [[[UIMenuItem alloc] initWithTitle:@"Fish" action:@selector(customMenu)] autorelease];
+    UIMenuItem * item2 = [[[UIMenuItem alloc] initWithTitle:@"Stripes" action:@selector(customMenu)] autorelease];
+    UIMenuItem * item3 = [[[UIMenuItem alloc] initWithTitle:@"Grass" action:@selector(customMenu)] autorelease];
+    
+    [controller setMenuItems:[NSArray arrayWithObjects:item1, item2, item3, nil]];
+    
+    [controller setTargetRect:CGRectMake(0,0,320,460) inView:self];
+    [controller setMenuVisible:YES animated:YES];
+    
+}
+
+-(void)notifyOfColorChange:(TiColor*)newColor
 {
-    NSLog(@"showMenu called");
+	NSLog(@"[VIEW LIFECYCLE EVENT] notifyOfColorChange");
+    
+	// The event listeners for a view are actually attached to the view proxy.
+	// You must reference 'self.proxy' to get the proxy for this view
+    
+	// It is a good idea to check if there are listeners for the event that
+	// is about to fired. There could be zero or multiple listeners for the
+	// specified event.
+	if ([self.proxy _hasListeners:@"colorChange"]) {
+		NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:
+							   newColor,@"color",
+							   nil
+							   ];
+        
+		[self.proxy fireEvent:@"colorChange" withObject:event];
+	}
+}
+
+-(void)setSquare_:(id)shape
+{
+	// This method is a property 'setter' for the 'color' property of the
+	// view. View property methods are named using a special, required
+	// convention (the underscore suffix).
+    
+	NSLog(@"[VIEW LIFECYCLE EVENT] Property Set: setSquare_");
+    
+}
+
+-(void)setColor_:(id)color
+{
+	// This method is a property 'setter' for the 'color' property of the
+	// view. View property methods are named using a special, required
+	// convention (the underscore suffix).
+    
+	NSLog(@"[VIEW LIFECYCLE EVENT] Property Set: setColor_");
+    
+	// Use the TiUtils methods to get the values from the arguments
+	TiColor *newColor = [TiUtils colorValue:color];
+	UIColor *clr = [newColor _color];
+	UIView *sq = [self square];
+	sq.backgroundColor = clr;
+    
+	// Signal a property change notification to demonstrate the use
+	// of the proxy for the event listeners
+	[self notifyOfColorChange:newColor];
 }
 
 

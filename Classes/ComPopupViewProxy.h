@@ -9,6 +9,7 @@
 @interface ComPopupViewProxy : TiViewProxy {
 }
 
--(id)showMenu:(id)args;
+-(void)show:(id)args;
+-(void)hide:(id)args;
 
 @end

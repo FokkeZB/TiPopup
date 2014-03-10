@@ -15,29 +15,30 @@
 @implementation ComPopupViewController
 
 -(void)showController {
+    [self becomeFirstResponder];
+    UIMenuController* controller = [UIMenuController sharedMenuController];
     
+    UIMenuItem * item1 = [[[UIMenuItem alloc] initWithTitle:@"Fish" action:@selector(customMenu)] autorelease];
+    UIMenuItem * item2 = [[[UIMenuItem alloc] initWithTitle:@"Stripes" action:@selector(customMenu)] autorelease];
+    UIMenuItem * item3 = [[[UIMenuItem alloc] initWithTitle:@"Grass" action:@selector(customMenu)] autorelease];
+    
+    [controller setMenuItems:[NSArray arrayWithObjects:item1, item2, item3, nil]];
+    
+    [controller setTargetRect:CGRectMake(0,0,320,460) inView:self.view];
+    [controller setMenuVisible:YES animated:YES];
 }
 
 - (BOOL)canBecomeFirstResponder {
 	return YES;
 }
-
+/*
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     NSLog(@"touchesBegan called");
     CGPoint tapPoint = [[touches anyObject] locationInView:self.view];
-    [self becomeFirstResponder];
-UIMenuController* controller = [UIMenuController sharedMenuController];
     
-UIMenuItem * item1 = [[[UIMenuItem alloc] initWithTitle:@"Fish" action:@selector(customMenu)] autorelease];
-UIMenuItem * item2 = [[[UIMenuItem alloc] initWithTitle:@"Stripes" action:@selector(customMenu)] autorelease];
-UIMenuItem * item3 = [[[UIMenuItem alloc] initWithTitle:@"Grass" action:@selector(customMenu)] autorelease];
-
-[controller setMenuItems:[NSArray arrayWithObjects:item1, item2, item3, nil]];
-
-[controller setTargetRect:CGRectMake(tapPoint.x, tapPoint.y, 1, 1) inView:self.view];
-[controller setMenuVisible:YES animated:YES];
 }
+*/
 
 - (void)customMenu {
 }
@@ -58,9 +59,14 @@ UIMenuItem * item3 = [[[UIMenuItem alloc] initWithTitle:@"Grass" action:@selecto
     return self;
 }
 
+-(void)loadView {
+    [super loadView];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    NSLog(@"viewDidLoad");
 	// Do any additional setup after loading the view.
 }
 

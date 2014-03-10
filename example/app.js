@@ -14,9 +14,18 @@ win.open();
 var TiPopup = require('com.popup');
 Ti.API.info("module is => " + TiPopup);
 
-var popup = TiPopup.createView();
+// TODO: Change createView to createPopup
+var popup = TiPopup.createView({
+	width: 200,
+	height: 200,
+	items: ['One', 'Two', 'Three'],
+	backgroundColor: 'blue' // used for testing UIView location
+});
 win.add(popup);
 
-win.addEventListener('click', function() {
-	// popup.showMenu();
+popup.addEventListener('click', function() {
+	popup.show();
+	setTimeout(function() {
+		popup.hide();
+	}, 2000); 
 });
