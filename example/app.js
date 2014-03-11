@@ -23,11 +23,19 @@ popup.create({
 });
 
 popup.addEventListener('click', function(e) {
-	Ti.API.log('index: ' + e.index);
+	if(e.index) {
+		Ti.API.log('index: ' + e.index);
+	}
 });
 
-win.addEventListener('longpress', function() {
+win.addEventListener('longpress', function(e) {
+	Ti.API.log(JSON.stringify(e));
 	popup.show({
 		view: block
+		//coords: { x: 50, y: 70}
 	});
+});
+
+win.addEventListener('click', function() {
+	popup.hide();
 });

@@ -40,14 +40,22 @@
     
     [self becomeFirstResponder];
     NSDictionary *arguments = [args objectAtIndex:0];
-    
-    TiViewProxy *viewProx = [arguments objectForKey:@"view"];
-    UIView *_view = viewProx.view;
-    CGSize _size = _view.frame.size;
-    
     UIMenuController* controller = [UIMenuController sharedMenuController];
     
-    [controller setTargetRect:CGRectMake(0,0,_size.width,_size.height) inView:_view];
+    TiViewProxy *viewProx = [arguments objectForKey:@"view"];
+    NSDictionary *tapPoint = [arguments objectForKey:@"coords"];
+    
+    if(viewProx != nil) {
+        UIView *_view = viewProx.view;
+        CGSize _size = _view.frame.size;
+        [controller setTargetRect:CGRectMake(0,0,_size.width,_size.height) inView:_view];
+    }
+    
+    if(tapPoint != nil) {
+        CGFloat x = [TiUtils floatValue:@"x" properties:tapPoint];
+        CGFloat y = [TiUtils floatValue:@"y" properties:tapPoint];
+        [controller setTargetRect:CGRectMake(x, y, 1, 1) inView:self];
+    }
     
     [controller setMenuVisible:YES animated:YES];
     
