@@ -5,11 +5,11 @@
  * Please see the LICENSE included with this distribution for details.
  */
 
-#import "ComPopupPopupMenu.h"
+#import "ComAlexshivePopupPopupMenu.h"
 #import "TiUtils.h"
 #import "TiViewProxy.h"
 
-@implementation ComPopupPopupMenu
+@implementation ComAlexshivePopupPopupMenu
 
 -(void)dealloc {
     [super dealloc];

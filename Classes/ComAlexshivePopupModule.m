@@ -4,25 +4,25 @@
  * Appcelerator Titanium is Copyright (c) 2009-2010 by Appcelerator, Inc.
  * and licensed under the Apache Public License (version 2)
  */
-#import "ComPopupModule.h"
+#import "ComAlexshivePopupModule.h"
 #import "TiBase.h"
 #import "TiHost.h"
 #import "TiUtils.h"
 
-@implementation ComPopupModule
+@implementation ComAlexshivePopupModule
 
 #pragma mark Internal
 
 // this is generated for your module, please do not change it
 -(id)moduleGUID
 {
-	return @"5b9e9da3-2e8d-4376-9178-39bc05918e2a";
+	return @"4894dcca-6317-40b5-8d0d-48aa8cb7d0bf";
 }
 
 // this is generated for your module, please do not change it
 -(NSString*)moduleId
 {
-	return @"com.popup";
+	return @"com.alexshive.popup";
 }
 
 #pragma mark Lifecycle

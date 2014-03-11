@@ -5,11 +5,11 @@
  * Please see the LICENSE included with this distribution for details.
  */
 
-#import "ComPopupPopupMenuProxy.h"
-#import "ComPopupPopupMenu.h"
+#import "ComAlexshivePopupPopupMenuProxy.h"
+#import "ComAlexshivePopupPopupMenu.h"
 #import "TiUtils.h"
 
-@implementation ComPopupPopupMenuProxy
+@implementation ComAlexshivePopupPopupMenuProxy
 
 // This is to prevent errors from showing up. Thanks BeK0suke
 #ifndef USE_VIEW_FOR_UI_METHOD

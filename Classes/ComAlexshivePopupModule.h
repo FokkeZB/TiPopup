@@ -6,7 +6,7 @@
  */
 #import "TiModule.h"
 
-@interface ComPopupModule : TiModule 
+@interface ComAlexshivePopupModule : TiModule 
 {
 }
 

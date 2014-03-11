@@ -8,7 +8,7 @@
 #import "TiUIView.h"
 #import "TiModule.h"
 
-@interface ComPopupPopupMenu : TiUIView {
+@interface ComAlexshivePopupPopupMenu : TiUIView {
     //@private UIMenuController *controller;
 }
 

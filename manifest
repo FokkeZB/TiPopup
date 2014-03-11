@@ -12,7 +12,7 @@ copyright: Copyright (c) 2014 by Your Company
 
 # these should not be edited
 name: TiPopup
-moduleid: com.popup
-guid: 5b9e9da3-2e8d-4376-9178-39bc05918e2a
+moduleid: com.alexshive.popup
+guid: 4894dcca-6317-40b5-8d0d-48aa8cb7d0bf
 platform: iphone
-minsdk: 3.2.0.GA
+minsdk: 3.2.1.GA

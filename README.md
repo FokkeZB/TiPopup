@@ -5,7 +5,7 @@ Titanium Module for controlling the UIMenuController
 
 ## Installation
 
-- Add or extract com.popup-iphone-0.1.zip into your modules folder located in **dist** folder
+- Add or extract com.alexshive.popup-iphone-0.1.zip into your modules folder located in **dist** folder
 - Edit your tiapp.xml to add the module
 - Build your Titanium project
 
@@ -19,7 +19,7 @@ Titanium Module for controlling the UIMenuController
 		});
 		win.open();
 
-		var TiPopup = require('com.popup');
+		var TiPopup = require('com.alexshive.popup');
 
 		var popup = TiPopup.createPopupMenu();
 

@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D2AAC07D0554694100DB518D"
-               BuildableName = "libComPopup.a"
+               BuildableName = "libComAlexshivePopup.a"
                BlueprintName = "TiPopup"
                ReferencedContainer = "container:TiPopup.xcodeproj">
             </BuildableReference>

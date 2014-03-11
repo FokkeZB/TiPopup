@@ -4,7 +4,7 @@ var win = Ti.UI.createWindow({
 });
 win.open();
 
-var TiPopup = require('com.popup');
+var TiPopup = require('com.alexshive.popup');
 Ti.API.info("module is => " + TiPopup);
 
 var popup = TiPopup.createPopupMenu();
