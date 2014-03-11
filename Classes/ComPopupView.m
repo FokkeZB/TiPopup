@@ -30,13 +30,13 @@
 }
 
 -(void)hide:(id)args {
-    NSLog(@"Hide dialog");
+    //NSLog(@"Hide dialog");
     UIMenuController* controller = [UIMenuController sharedMenuController];
     [controller setMenuVisible:NO animated:YES];
 }
 
 -(void)show:(id)args {
-    NSLog(@"Show dialog");
+    //NSLog(@"Show dialog");
     
     [self becomeFirstResponder];
     NSDictionary *arguments = [args objectAtIndex:0];
@@ -82,10 +82,6 @@
     
 }
 
--(void)customMenu {
-    NSLog(@"It works!");
-}
-
 -(void)notifyOfColorChange:(TiColor*)newColor
 {
 	NSLog(@"[VIEW LIFECYCLE EVENT] notifyOfColorChange");
@@ -106,7 +102,7 @@
 	}
 }
 
-
+/*
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     NSLog(@"touchesBegan called, where are ya?");
@@ -120,14 +116,16 @@
     [controller setTargetRect:CGRectMake(tapPoint.x,tapPoint.y,1,1) inView:self];
     [controller setMenuVisible:YES animated:YES];
 }
+ */
 
 #pragma Finding the MenuItemIndex
 // Credit:
 // http://stackoverflow.com/questions/9146670/ios-uimenucontroller-uimenuitem-how-to-determine-item-selected-with-generic-sel
 
 - (void)tappedMenuItem:(NSString *)buttonText {
-    NSLog(@"Index tapped: %@", buttonText);
-    [self.proxy fireEvent:@"menuitem" withObject:buttonText];
+    // NSLog(@"Index tapped: %@", buttonText);
+    NSDictionary *indexReturn = [NSDictionary dictionaryWithObjectsAndKeys:buttonText,@"index",nil];
+    [self.proxy fireEvent:@"click" withObject:indexReturn];
 }
 
 - (BOOL)canPerformAction:(SEL)action withSender:(id)sender {
@@ -155,8 +153,6 @@
         [super forwardInvocation:invocation];
     }
 }
-
-
 
 
 @end

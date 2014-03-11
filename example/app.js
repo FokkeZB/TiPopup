@@ -27,13 +27,7 @@ popup.create({
 });
 
 popup.addEventListener('click', function(e) {
-	Ti.API.log('popup clicked');
-	Ti.API.log(JSON.stringify(e));
-});
-
-popup.addEventListener('menuitem', function(e) {
-	Ti.API.log('menu item clicked');
-	Ti.API.log(JSON.stringify(e));
+	Ti.API.log('index: ' + e.index);
 });
 
 block.addEventListener('click', function(e) {
