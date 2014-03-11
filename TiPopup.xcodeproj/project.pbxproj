@@ -26,10 +26,10 @@
 		24DD6CFA1134B3F500162E58 /* ComPopupModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DD6CF81134B3F500162E58 /* ComPopupModule.m */; };
 		24DE9E1111C5FE74003F90F6 /* ComPopupModuleAssets.h in Headers */ = {isa = PBXBuildFile; fileRef = 24DE9E0F11C5FE74003F90F6 /* ComPopupModuleAssets.h */; };
 		24DE9E1211C5FE74003F90F6 /* ComPopupModuleAssets.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DE9E1011C5FE74003F90F6 /* ComPopupModuleAssets.m */; };
-		7B90CB9618905D0100F41AAB /* ComPopupView.h in Headers */ = {isa = PBXBuildFile; fileRef = 7B90CB9218905D0100F41AAB /* ComPopupView.h */; };
-		7B90CB9718905D0100F41AAB /* ComPopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B90CB9318905D0100F41AAB /* ComPopupView.m */; };
-		7B90CB9818905D0100F41AAB /* ComPopupViewProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 7B90CB9418905D0100F41AAB /* ComPopupViewProxy.h */; };
-		7B90CB9918905D0100F41AAB /* ComPopupViewProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B90CB9518905D0100F41AAB /* ComPopupViewProxy.m */; };
+		7BB674DE18CF86C1006C1F30 /* ComPopupPopupMenu.h in Headers */ = {isa = PBXBuildFile; fileRef = 7BB674DA18CF86C1006C1F30 /* ComPopupPopupMenu.h */; };
+		7BB674DF18CF86C1006C1F30 /* ComPopupPopupMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB674DB18CF86C1006C1F30 /* ComPopupPopupMenu.m */; };
+		7BB674E018CF86C1006C1F30 /* ComPopupPopupMenuProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 7BB674DC18CF86C1006C1F30 /* ComPopupPopupMenuProxy.h */; };
+		7BB674E118CF86C1006C1F30 /* ComPopupPopupMenuProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB674DD18CF86C1006C1F30 /* ComPopupPopupMenuProxy.m */; };
 		AA747D9F0F9514B9006C5449 /* ComPopup_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* ComPopup_Prefix.pch */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 /* End PBXBuildFile section */
@@ -50,10 +50,10 @@
 		24DD6D1B1134B66800162E58 /* titanium.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = titanium.xcconfig; sourceTree = "<group>"; };
 		24DE9E0F11C5FE74003F90F6 /* ComPopupModuleAssets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComPopupModuleAssets.h; path = Classes/ComPopupModuleAssets.h; sourceTree = "<group>"; };
 		24DE9E1011C5FE74003F90F6 /* ComPopupModuleAssets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComPopupModuleAssets.m; path = Classes/ComPopupModuleAssets.m; sourceTree = "<group>"; };
-		7B90CB9218905D0100F41AAB /* ComPopupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComPopupView.h; path = Classes/ComPopupView.h; sourceTree = "<group>"; };
-		7B90CB9318905D0100F41AAB /* ComPopupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComPopupView.m; path = Classes/ComPopupView.m; sourceTree = "<group>"; };
-		7B90CB9418905D0100F41AAB /* ComPopupViewProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComPopupViewProxy.h; path = Classes/ComPopupViewProxy.h; sourceTree = "<group>"; };
-		7B90CB9518905D0100F41AAB /* ComPopupViewProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComPopupViewProxy.m; path = Classes/ComPopupViewProxy.m; sourceTree = "<group>"; };
+		7BB674DA18CF86C1006C1F30 /* ComPopupPopupMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComPopupPopupMenu.h; path = Classes/ComPopupPopupMenu.h; sourceTree = "<group>"; };
+		7BB674DB18CF86C1006C1F30 /* ComPopupPopupMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComPopupPopupMenu.m; path = Classes/ComPopupPopupMenu.m; sourceTree = "<group>"; };
+		7BB674DC18CF86C1006C1F30 /* ComPopupPopupMenuProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComPopupPopupMenuProxy.h; path = Classes/ComPopupPopupMenuProxy.h; sourceTree = "<group>"; };
+		7BB674DD18CF86C1006C1F30 /* ComPopupPopupMenuProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComPopupPopupMenuProxy.m; path = Classes/ComPopupPopupMenuProxy.m; sourceTree = "<group>"; };
 		AA747D9E0F9514B9006C5449 /* ComPopup_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComPopup_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D2AAC07E0554694100DB518D /* libComPopup.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libComPopup.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -101,10 +101,10 @@
 		08FB77AEFE84172EC02AAC07 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				7B90CB9218905D0100F41AAB /* ComPopupView.h */,
-				7B90CB9318905D0100F41AAB /* ComPopupView.m */,
-				7B90CB9418905D0100F41AAB /* ComPopupViewProxy.h */,
-				7B90CB9518905D0100F41AAB /* ComPopupViewProxy.m */,
+				7BB674DA18CF86C1006C1F30 /* ComPopupPopupMenu.h */,
+				7BB674DB18CF86C1006C1F30 /* ComPopupPopupMenu.m */,
+				7BB674DC18CF86C1006C1F30 /* ComPopupPopupMenuProxy.h */,
+				7BB674DD18CF86C1006C1F30 /* ComPopupPopupMenuProxy.m */,
 				24DE9E0F11C5FE74003F90F6 /* ComPopupModuleAssets.h */,
 				24DE9E1011C5FE74003F90F6 /* ComPopupModuleAssets.m */,
 				24DD6CF71134B3F500162E58 /* ComPopupModule.h */,
@@ -130,9 +130,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA747D9F0F9514B9006C5449 /* ComPopup_Prefix.pch in Headers */,
+				7BB674DE18CF86C1006C1F30 /* ComPopupPopupMenu.h in Headers */,
+				7BB674E018CF86C1006C1F30 /* ComPopupPopupMenuProxy.h in Headers */,
 				24DD6CF91134B3F500162E58 /* ComPopupModule.h in Headers */,
-				7B90CB9818905D0100F41AAB /* ComPopupViewProxy.h in Headers */,
-				7B90CB9618905D0100F41AAB /* ComPopupView.h in Headers */,
 				24DE9E1111C5FE74003F90F6 /* ComPopupModuleAssets.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -207,9 +207,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7B90CB9718905D0100F41AAB /* ComPopupView.m in Sources */,
+				7BB674DF18CF86C1006C1F30 /* ComPopupPopupMenu.m in Sources */,
+				7BB674E118CF86C1006C1F30 /* ComPopupPopupMenuProxy.m in Sources */,
 				24DD6CFA1134B3F500162E58 /* ComPopupModule.m in Sources */,
-				7B90CB9918905D0100F41AAB /* ComPopupViewProxy.m in Sources */,
 				24DE9E1211C5FE74003F90F6 /* ComPopupModuleAssets.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

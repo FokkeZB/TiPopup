@@ -6,7 +6,7 @@
  */
 #import "TiViewProxy.h"
 
-@interface ComPopupViewProxy : TiViewProxy {
+@interface ComPopupPopupMenuProxy : TiViewProxy {
 }
 
 -(void)show:(id)args;

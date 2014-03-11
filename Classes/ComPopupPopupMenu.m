@@ -5,11 +5,11 @@
  * Please see the LICENSE included with this distribution for details.
  */
 
-#import "ComPopupView.h"
+#import "ComPopupPopupMenu.h"
 #import "TiUtils.h"
 #import "TiViewProxy.h"
 
-@implementation ComPopupView
+@implementation ComPopupPopupMenu
 
 -(void)dealloc {
     [super dealloc];
@@ -126,6 +126,8 @@
     // NSLog(@"Index tapped: %@", buttonText);
     NSDictionary *indexReturn = [NSDictionary dictionaryWithObjectsAndKeys:buttonText,@"index",nil];
     [self.proxy fireEvent:@"click" withObject:indexReturn];
+    UIMenuController* controller = [UIMenuController sharedMenuController];
+    [controller setMenuVisible:NO animated:YES];
 }
 
 - (BOOL)canPerformAction:(SEL)action withSender:(id)sender {

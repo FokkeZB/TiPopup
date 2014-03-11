@@ -8,7 +8,7 @@
 #import "TiUIView.h"
 #import "TiModule.h"
 
-@interface ComPopupView : TiUIView {
+@interface ComPopupPopupMenu : TiUIView {
     //@private UIMenuController *controller;
 }
 
