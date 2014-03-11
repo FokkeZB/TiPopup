@@ -6,6 +6,8 @@
  */
 
 #import "ComPopupView.h"
+#import "TiUtils.h"
+#import "TiViewProxy.h"
 
 @implementation ComPopupView
 
@@ -14,17 +16,6 @@
     NSLog(@"dealloc");
 }
 
--(UIView*)square
-{
-	// Return the square view. If this is the first time then allocate and
-	// initialize it.
-	if (square == nil) {
-		NSLog(@"[VIEW LIFECYCLE EVENT] square");
-        square = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
-        square.backgroundColor = [UIColor redColor];
-	}
-	return square;
-}
 - (id)init {
     self = [super init];
     if (self != nil) {
@@ -48,10 +39,16 @@
     NSLog(@"Show dialog");
     
     [self becomeFirstResponder];
+    NSDictionary *arguments = [args objectAtIndex:0];
+    
+    TiViewProxy *viewProx = [arguments objectForKey:@"view"];
+    UIView *_view = viewProx.view;
+    CGSize _size = _view.frame.size;
     
     UIMenuController* controller = [UIMenuController sharedMenuController];
     
-    [controller setTargetRect:CGRectMake(0,0,1,1) inView:self];
+    [controller setTargetRect:CGRectMake(0,0,_size.width,_size.height) inView:_view];
+    
     [controller setMenuVisible:YES animated:YES];
     
 }
@@ -61,6 +58,7 @@
     [self becomeFirstResponder];
     
     // test
+    ENSURE_ARRAY(args);
     NSDictionary *arguments = [args objectAtIndex:0];
     NSArray * menuItems = [arguments objectForKey:@"items"];
     // NSLog(menuItems[0]);
@@ -108,33 +106,19 @@
 	}
 }
 
--(void)setSquare_:(id)shape
-{
-    // pretty cool stuff
-    // example:
-    // popup.createView({ square: 'yes' });
-    
-	NSLog(@"[VIEW LIFECYCLE EVENT] Property Set: setSquare_");
-    
-}
 
--(void)setColor_:(id)color
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-	// This method is a property 'setter' for the 'color' property of the
-	// view. View property methods are named using a special, required
-	// convention (the underscore suffix).
+    NSLog(@"touchesBegan called, where are ya?");
+    CGPoint tapPoint = [[touches anyObject] locationInView:self];
+    NSLog(@"x: %f", tapPoint.x);
+    NSLog(@"y: %f", tapPoint.y);
+    [self becomeFirstResponder];
     
-	NSLog(@"[VIEW LIFECYCLE EVENT] Property Set: setColor_");
+    UIMenuController* controller = [UIMenuController sharedMenuController];
     
-	// Use the TiUtils methods to get the values from the arguments
-	TiColor *newColor = [TiUtils colorValue:color];
-	UIColor *clr = [newColor _color];
-	UIView *sq = [self square];
-	sq.backgroundColor = clr;
-    
-	// Signal a property change notification to demonstrate the use
-	// of the proxy for the event listeners
-	[self notifyOfColorChange:newColor];
+    [controller setTargetRect:CGRectMake(tapPoint.x,tapPoint.y,1,1) inView:self];
+    [controller setMenuVisible:YES animated:YES];
 }
 
 #pragma Finding the MenuItemIndex
@@ -143,15 +127,9 @@
 
 - (void)tappedMenuItem:(NSString *)buttonText {
     NSLog(@"Index tapped: %@", buttonText);
+    [self.proxy fireEvent:@"menuitem" withObject:buttonText];
 }
-/*
-- (BOOL)canPerformAction:(SEL)action withSender:(id)sender {
-    if (action == @selector(customMenu)) {
-        return YES;
-    }
-    return NO;
-}
-*/
+
 - (BOOL)canPerformAction:(SEL)action withSender:(id)sender {
     NSString *sel = NSStringFromSelector(action);
     NSRange match = [sel rangeOfString:@"magic_"];
@@ -177,6 +155,8 @@
         [super forwardInvocation:invocation];
     }
 }
+
+
 
 
 @end

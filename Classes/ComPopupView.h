@@ -6,9 +6,10 @@
  */
 #import <UIKit/UIKit.h>
 #import "TiUIView.h"
+#import "TiModule.h"
 
 @interface ComPopupView : TiUIView {
-    @private UIView *square;
+    //@private UIMenuController *controller;
 }
 
 -(void)show:(id)args;
