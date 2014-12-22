@@ -2,12 +2,12 @@
 # this is your module manifest and used by Titanium
 # during compilation, packaging, distribution, etc.
 #
-version: 0.1
+version: 0.1.1
 apiversion: 2
-description: My module
-author: Your Name
-license: Specify your license
-copyright: Copyright (c) 2014 by Your Company
+description: UIMenuController for Titanium
+author: Alex Shive
+license: MIT
+copyright: Copyright (c) 2014 by Alex Shive
 
 
 # these should not be edited
@@ -16,3 +16,4 @@ moduleid: com.alexshive.popup
 guid: 4894dcca-6317-40b5-8d0d-48aa8cb7d0bf
 platform: iphone
 minsdk: 3.2.1.GA
+architectures: armv7 i386 x86_64 arm64

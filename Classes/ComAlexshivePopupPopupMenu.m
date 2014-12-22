@@ -13,7 +13,7 @@
 
 -(void)dealloc {
     [super dealloc];
-    NSLog(@"dealloc");
+    // NSLog(@"dealloc");
 }
 
 - (id)init {
